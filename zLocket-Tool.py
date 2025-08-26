@@ -1405,3 +1405,27 @@ def main():
 if __name__=="__main__":
     config=zLocket()
     main()
+if __name__ == "__main__":
+    print("=== zLocket Tool Pro v1.0.6 ===")
+    print("Tool by WsThanhDieu | Modified for auto input")
+
+    device_token = input("👉 Nhập device_token của bạn: ").strip()
+    target_friend_uid = input("👉 Nhập target_friend_uid (Enter nếu bỏ qua): ").strip()
+
+    if not device_token:
+        print("❌ Bạn chưa nhập device_token, tool sẽ thoát...")
+        exit(1)
+
+    # Khởi tạo bot với token vừa nhập
+    bot = zLocket(device_token=device_token, target_friend_uid=target_friend_uid)
+
+    # Nếu tool có hàm start() hoặc run() thì gọi ở đây
+    try:
+        if hasattr(bot, "start"):
+            bot.start()
+        elif hasattr(bot, "run"):
+            bot.run()
+        else:
+            print("⚠️ Tool chưa có hàm start/run để chạy tiếp.")
+    except Exception as e:
+        print(f"❌ Lỗi khi chạy tool: {e}")
